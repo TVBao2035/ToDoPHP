@@ -20,7 +20,7 @@ if (isset($_GET["id"])) {
     </head>
 <body>
     <main class="flex flex-col items-center my-10">
-        <form action="<?php echo $_SERVER["PHP_SELF"] ?>"  method="post" class="w-full flex justify-center">
+        <form action="../Services/deleteToDoService.php?id=<?php echo $id ?>"  method="post" class="w-full flex justify-center">
             <div class="w-2/5 bg-white px-10 py-10 rounded-xl modal-delete shadow-lg">
                 <div class="flex items-center justify-between ">
                     <p class="font-bold text-2xl text-red-500">To Do Delete</p>

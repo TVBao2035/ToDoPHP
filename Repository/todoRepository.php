@@ -20,4 +20,13 @@
 
         return $connect->execute_query("insert into todos(name, priority) values('".$todo->name."', ".$todo->priority.")");
     }
+    function UpdateToDo(Todo $todo){
+        global $connect;
+        return $connect->execute_query("update todos set name='".$todo->name."', priority='".$todo->priority."' where id=".$todo->id."");
+    }
+
+    function DeleteToDo(int $id){
+        global $connect;
+        return $connect->execute_query("delete from todos where id=$id");
+    }
 ?>

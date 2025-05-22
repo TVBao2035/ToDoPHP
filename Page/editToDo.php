@@ -19,7 +19,7 @@
 <body>
 
     <main class="flex flex-col items-center justify-center w-full h-full my-10">
-        <form action="<?php echo $_SERVER["PHP_SELF"] ?>"  method="post" class="w-full flex justify-center">
+        <form action="../Services/editToDoService.php?id=<?php echo $id ?>"  method="post" class="w-full flex justify-center">
             <div class="w-1/2 bg-white px-10 py-10 rounded-xl modal-edit shadow-lg">
                 <div class="flex items-center justify-between ">
                     <p class="font-bold text-2xl text-yellow-300">To Do Edit</p>
@@ -32,6 +32,7 @@
                         <label for="">To Do Name</label>
                         <input
                             type="text"
+                            name="name"
                             value="<?php
                                     if(isset($todo)){
                                         echo $todo["Name"];
@@ -48,7 +49,7 @@
                                         if($todo["Priority"] == 1) echo "checked";
                                     }
                                 ?>
-                                type="radio" id="priority_low--edit" name="priority_edit" class="w-6" >
+                                type="radio" id="priority_low--edit" name="priority_edit" class="w-6" value="1">
                             <label for="priority_low--edit" class="text-green-500 font-bold">Low</label>
                         </div>
                         <div class="flex item-center gap-2 my-2">
@@ -58,7 +59,7 @@
                                         if($todo["Priority"] == 2) echo "checked";
                                     }
                                 ?>
-                                type="radio" id="priority_medium--edit" name="priority_edit" class="w-6">
+                                type="radio" id="priority_medium--edit" name="priority_edit" class="w-6" value="2">
                             <label for="priority_medium--edit" class="text-yellow-500 font-bold">Medium</label>
                         </div>
                         <div class="flex item-center gap-2 my-2">
@@ -68,7 +69,7 @@
                                         if($todo["Priority"] == 3) echo "checked";
                                     }
                                 ?>
-                                type="radio" id="priority_hight--edit" name="priority_edit" class="w-6">
+                                type="radio" id="priority_hight--edit" name="priority_edit" class="w-6" value="3">
                             <label for="priority_hight--edit" class="text-red-500 font-bold">Hight</label>
                         </div>
                     </div>

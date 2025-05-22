@@ -34,7 +34,7 @@
    </header>
     <main class="flex flex-col items-center my-10">
         <form 
-            action="./Page/createToDo.php" 
+            action="./Services/createToDoService.php" 
             method="post"
             class="w-1/2"
         >
@@ -49,7 +49,7 @@
                 </div>
                 <div class="px-5">
                     <div class="flex item-center gap-2 my-2">
-                        <input type="radio" value="1" id="priority_low" name="priority" class="w-6">
+                        <input type="radio" value="1" id="priority_low" name="priority" class="w-6" checked>
                         <label for="priority_low" class="text-green-500 font-bold">Low</label>
                     </div>
                     <div class="flex item-center gap-2 my-2">
