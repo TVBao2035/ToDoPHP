@@ -1,5 +1,10 @@
 <?php
-    include('../Repository/todoRepository.php');
+include_once(__DIR__.'/../Repository/todoRepository.php');
+session_start();
+    $userId = CheckCookie($cookie_name);
+    if ($userId == null) {
+        header("Location: ./login.php");
+    }
     if(isset($_GET["id"])){
         $id = $_GET["id"];
         $data = GetByTodoById($id);
@@ -23,7 +28,7 @@
             <div class="w-1/2 bg-white px-10 py-10 rounded-xl modal-edit shadow-lg">
                 <div class="flex items-center justify-between ">
                     <p class="font-bold text-2xl text-yellow-300">To Do Edit</p>
-                    <a href="../index.php">
+                    <a href="<?php if(isset($_SESSION['prev_url'])) echo $_SESSION['prev_url']; ?>">
                         <img src="../Assets/x-red.png" class="w-6 h-6 close-modal" alt="">
                     </a>
                 </div>

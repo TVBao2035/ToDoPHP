@@ -1,6 +1,11 @@
 <?php
-include(__DIR__ .'/../Repository/todoRepository.php');
-include(__DIR__ . '/../Enums/PriorityMap.php');
+include_once(__DIR__ .'/../Repository/todoRepository.php');
+include_once(__DIR__ . '/../Enums/PriorityMap.php');
+session_start();
+$userId = CheckCookie($cookie_name);
+if ($userId == null) {
+    header("Location: ./login.php");
+}
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
     $data = GetByTodoById($id);
@@ -24,7 +29,9 @@ if (isset($_GET["id"])) {
             <div class="w-2/5 bg-white px-10 py-10 rounded-xl modal-delete shadow-lg">
                 <div class="flex items-center justify-between ">
                     <p class="font-bold text-2xl text-red-500">To Do Delete</p>
-                    <a href="../index.php"><img src="../Assets/x-red.png" class="w-6 h-6 close-modal" alt=""></a>
+                    <a href="<?php if(isset($_SESSION['prev_url'])) echo $_SESSION['prev_url']; ?>">
+                        <img src="../Assets/x-red.png" class="w-6 h-6 close-modal" alt="">
+                    </a>
                 </div>
                 <div class="my-5">
                     <div class="flex gap-2">

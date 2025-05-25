@@ -1,5 +1,7 @@
 <?php
-    include(__DIR__."/../Repository/userRepository.php");
+    include_once(__DIR__."/../Repository/userRepository.php");
+    include_once(__DIR__. "/../Enums/cookie.php");
+    RemoveCookie($cookie_name);
     if(isset($_POST["submit"])){
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -8,6 +10,7 @@
         && strlen((trim($password))) != 0 ){
             $data = Login($email, $password);
             if($data->isSuccess){
+                SaveMyCookie($cookie_name, $data->data["Id"]);
                 header("Location: ../index.php");
             }
         }
